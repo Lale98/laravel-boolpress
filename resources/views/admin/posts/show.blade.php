@@ -9,7 +9,16 @@
     @endif
 
     <div class="d-flex justify-content-between mb-5">
-        <h1>{{ $post->title }}</h1>
+        <div class="d-flex align-items-center">
+            <h1 class="mr-2">{{ $post->title }}</h1>
+            <h5>
+                @if ($post->category)        
+                    <a href="{{ route('admin.categories.show', $post->category->id) }}" class="badge badge-info">{{ $post->category->name }}</a>
+                @else
+                    <span class="badge badge-secondary">Nessuna categoria associata</span>     
+                @endif
+            </h5>
+        </div>
         <div class="d-flex justify-content-between">
             <form class="me-1">
                 <a class="btn btn-warning mr-2" href="{{ route("admin.posts.edit", $post->id) }}">Modifica</a>

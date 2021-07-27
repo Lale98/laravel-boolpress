@@ -14,6 +14,20 @@
             <label for="content"><strong>Contenuto</strong></label>
             <input type="text" class="form-control" id="content" placeholder="Inserisci il contenuto del Post" name="content">
         </div>
+        <div class="form-group">
+            <label for="category_id">Categoria</label>
+            <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                <option value="">-- Seleziona una categoria --</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}"
+                        {{ ($category->id == old('category_id')) ? 'selected' : '' }}
+                        >{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>    
         <div class="d-inline-flex  mt-4">
             <button type="submit" class="btn btn-primary mr-3"><strong>Salva</strong></button>
             <div>
