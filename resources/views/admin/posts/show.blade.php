@@ -8,7 +8,7 @@
     </div>
     @endif
 
-    <div class="d-flex justify-content-between mb-5">
+    <div class="d-flex justify-content-between mb-3">
         <div class="d-flex align-items-center">
             <h1 class="mr-2">{{ $post->title }}</h1>
             <h5>
@@ -33,8 +33,20 @@
             </form>
         </div>
     </div>
-
     <div>
+        <h5>Tags</h5>
+        @if (count($post->tags) > 0)
+            <div class="mt-1 h6">
+                @foreach ($post->tags as $tag)
+                    <span class="badge badge-pill badge-dark">{{ $tag->name }}</span>    
+                @endforeach
+            </div>
+        @else
+            <h5 class="mt-1">Nessun tag collegato</h5>    
+        @endif
+    </div>
+
+    <div class="mt-5">
         <h4>Contenuto</h4>
         <p>{{ $post->content }}</p>
     </div>
