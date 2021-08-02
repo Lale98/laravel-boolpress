@@ -19,5 +19,6 @@ Route::namespace('Api')
     ->group(function() {
 
         Route::get('posts', 'PostController@index');
+        Route::get('posts/{slug}', 'PostController@show');
 
     });

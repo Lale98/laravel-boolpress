@@ -2,9 +2,9 @@
   <div class="col-4 my-3 d-flex">
         <div class="card w-100">
             <div class="card-body">
-                <h4>{{ item.title }}</h4>
+                <h4 class="card-title">{{ item.title }}</h4>
                 <p>{{ item.excerpt }}</p>
-                <a href="#">Leggi</a>
+                <router-link :to="{ name: 'single-post', params: { slug: item.slug } }">Leggi</router-link>
             </div>
         </div>       
     </div>
